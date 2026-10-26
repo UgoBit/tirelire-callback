@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tirelire — retour de la banque</title>
+<style>body{font:16px system-ui;max-width:32rem;margin:4rem auto;padding:0 1rem;color:#222}</style>
+</head>
+<body>
+<h1>Retour vers Tirelire…</h1>
+<p id="msg">Redirection vers l'application sur ton ordinateur.</p>
+<noscript><p>Active JavaScript, ou ouvre <code>http://localhost:8723/</code> à la main.</p></noscript>
+<script>
+// Relais statique : la banque exige une URL https, l'app locale écoute en http://localhost:8723.
+// Rien n'est stocké ni envoyé ailleurs : la page renvoie simplement le navigateur, paramètres compris.
+location.replace("http://localhost:8723/" + location.search);
+setTimeout(function () {
+  document.getElementById("msg").textContent =
+    "Si rien ne se passe, vérifie que Tirelire est bien lancée sur ton ordinateur, puis recharge cette page.";
+}, 4000);
+</script>
+</body>
+</html>
